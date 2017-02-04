@@ -72,7 +72,7 @@ public class TaskCommitFragment extends Fragment {
                 Constant.TaskFactory.add(0,item);
 
                 FragmentManager fm = getFragmentManager();
-                TaskListTabFrament fragment2 = (TaskListTabFrament) fm.findFragmentByTag(Constant.TAGS[1]);
+                TaskListTabFrament fragment2 = (TaskListTabFrament) getActivity().getSupportFragmentManager().findFragmentByTag(Constant.TAGS[0]).getChildFragmentManager().getFragments().get(0);
 
                 if (fragment2 != null) {
                     fragment2.refresh();
@@ -90,19 +90,6 @@ public class TaskCommitFragment extends Fragment {
                     }
                 });
                 builder.show();
-
-
-
-               // transaction.show(getFragmentManager().findFragmentByTag("discover"));
-
-//                TaskListTabFrament fragment = new TaskListTabFrament();
-//
-
-//
-//
-//                transaction.replace(R.id.content_frame, fragment);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
 
             }
 

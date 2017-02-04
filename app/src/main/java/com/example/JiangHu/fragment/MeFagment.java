@@ -3,6 +3,8 @@ package com.example.JiangHu.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 
+import com.example.JiangHu.Constant;
+import com.example.JiangHu.MyTaskAdapter;
 import com.example.JiangHu.R;
 import com.example.JiangHu.MyProfileActivity;
 
@@ -25,14 +29,11 @@ import java.util.Map;
  */
 public class MeFagment extends Fragment {
     private GridView my_gridView_user;
-
+    private RecyclerView recyclerView;
     //资源文件
     private int[] pic_path = {R.drawable.completed, R.drawable.ongoing, R.drawable.published, R.drawable.evaluated};
     private String[] texts = {"已完成","进行中","我发布的","待评价"};
-    private LinearLayout ll_user_life;
-    private LinearLayout ll_user_members;
-    private LinearLayout ll_user_store;
-    private LinearLayout ll_user_opinion;
+
     private ImageView myprofiles;
 
 
@@ -48,10 +49,12 @@ public class MeFagment extends Fragment {
 
     private void initView(View view) {
 
-        ll_user_life = (LinearLayout) view.findViewById(R.id.ll_user_life);
-        ll_user_members = (LinearLayout) view.findViewById(R.id.ll_user_members);
-        ll_user_store = (LinearLayout) view.findViewById(R.id.ll_user_store);
-        ll_user_opinion = (LinearLayout) view.findViewById(R.id.ll_user4);
+
+        MyTaskAdapter adapter = new MyTaskAdapter(getContext(), Constant.TaskFactory.subList(3,8));
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_recommend_tasks);
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(llm);
         myprofiles = (ImageView) view.findViewById(R.id.profile_details);
         myprofiles.setClickable(true);
         myprofiles.setOnClickListener(new View.OnClickListener() {
@@ -80,19 +83,6 @@ public class MeFagment extends Fragment {
                                  new String[] {"taskImage","taskText"},
                                  new int[]{R.id.taskImage,R.id.taskText});
         my_gridView_user.setAdapter(simpleAdapter);
-
-       // ll_user_life.setOnClickListener(this);
-       // ll_user_members.setOnClickListener(this);
-       //ll_user_store.setOnClickListener(this);
-        //ll_user_opinion.setOnClickListener(this);
-
-
-//        my_gridView_user = (GridView) view.findViewById(R.id.gridView_user);
-//        my_gridView_user.setSelector(new ColorDrawable(Color.TRANSPARENT));
-//         adapter_GridView = new Adapter_GridView(getActivity(), pic_path);
-//        my_gridView_user.setAdapter(adapter_GridView);
-
-
 
     }
 

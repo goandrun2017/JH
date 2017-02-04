@@ -67,6 +67,8 @@
     <color name="material_blue_700">#00796B</color>
     <color name="material_green_A200">#FD87A9</color>
 
+    <color name="mycolor">#f6f4f2</color>
+
 
 </resources>
 

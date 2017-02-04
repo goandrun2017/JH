@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
   protected void onStart() {
           super.onStart();
-          mHomeRadioGroup.check(R.id.radio_home);
+        ((RadioButton) mHomeRadioGroup.getChildAt(0)).setChecked(true);
       }
 
 
@@ -145,12 +145,17 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.radio_discover:
-                        if (fragment2 == null) {
-                            fragment2 = new TaskListTabFrament();
-                            ft.add(R.id.content_frame, fragment2, TAGS[1]);
-                        } else {
-                            ft.show(fragment2);
-                        }
+//                        if (fragment2 == null) {
+//                            fragment2 = new TaskListTabFrament();
+//                            ft.add(R.id.content_frame, fragment2, TAGS[1]);
+//                        } else {
+//                            ft.show(fragment2);
+//                        } if (fragment2 == null) {
+//                            fragment2 = new TaskListTabFrament();
+//                            ft.add(R.id.content_frame, fragment2, TAGS[1]);
+//                        } else {
+//                            ft.show(fragment2);
+//                        }
                         break;
                     case R.id.radio_publish:
                         if (fragment3 == null) {

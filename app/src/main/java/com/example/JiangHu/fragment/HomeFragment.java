@@ -2,6 +2,8 @@ package com.example.JiangHu.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,14 +33,14 @@ import java.util.List;
 public class HomeFragment extends Fragment
 {
 
-    private SwipeRefreshLayout swipeRefresh;
+   // private SwipeRefreshLayout swipeRefresh;
 
     private MyGridView myGridView;
 
     private Banner mBanner;
 
 
-    private MyTaskAdapter adapter;
+    //private MyTaskAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,23 +50,26 @@ public class HomeFragment extends Fragment
         buildupGrid(view);
 
 
+//
+//        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//
+//        //设置adapter
+//        adapter = new MyTaskAdapter(getContext(),getNewsList());
+//        recyclerView.setAdapter(adapter);
+//        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
+//        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
+//        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                refreshFruits();
+//            }
+//        });
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        //设置adapter
-        adapter = new MyTaskAdapter(getContext(),getNewsList());
-        recyclerView.setAdapter(adapter);
-        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
-        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshFruits();
-            }
-        });
-
-
+        FragmentManager fm = getChildFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.task_view,new TaskListTabFrament());
+        ft.commit();
 
         return view;
     }
@@ -174,25 +179,25 @@ public class HomeFragment extends Fragment
 
     }
 
-    private void refreshFruits() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter.notifyDataSetChanged();
-                        swipeRefresh.setRefreshing(false);
-                    }
-                });
-            }
-        }).start();
-    }
+//    private void refreshFruits() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(2000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        adapter.notifyDataSetChanged();
+//                        swipeRefresh.setRefreshing(false);
+//                    }
+//                });
+//            }
+//        }).start();
+//    }
 
     @Override
     public void setMenuVisibility(boolean menuVisibile) {

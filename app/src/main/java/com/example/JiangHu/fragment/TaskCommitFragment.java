@@ -248,8 +248,9 @@ class MyDatePickListerner implements DatePickerDialog.OnDateSetListener
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
 
         StringBuilder builder = new StringBuilder();
+
         builder.append(year).append("-").append(monthOfYear).append("-").append(dayOfMonth).append(" ");
-         editText.append(builder.toString());
+         editText.setText(builder.toString());
     }
 }
 

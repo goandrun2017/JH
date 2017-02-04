@@ -76,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+  protected void onStart() {
+          super.onStart();
+          mHomeRadioGroup.check(R.id.radio_home);
+      }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -170,6 +177,12 @@ public class MainActivity extends AppCompatActivity {
                             ft.show(fragment5);
                         }
                     default:
+                        if (fragment1 == null) {
+                            fragment1 = new HomeFragment();
+                            ft.add(R.id.content_frame, fragment1, TAGS[0]);
+                        } else {
+                            ft.show(fragment1);
+                        }
                         break;
                 }
 				ft.commit();

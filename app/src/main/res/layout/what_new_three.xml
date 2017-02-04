@@ -12,14 +12,18 @@
         android:focusable="true"
         android:scaleType="centerCrop" />
 
-    <ImageView
+    <Button
         android:id="@+id/iv_start_weibo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="150dp"
-        android:background="@drawable/arrow_expend_right"
+        android:background="@drawable/light_shape"
+        android:text="新的旅程"
+        android:textColor="@color/black"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:elevation="3dp"
         android:focusable="true" />
 
 </RelativeLayout>  

@@ -20,8 +20,8 @@ public class MyGridAdapter extends BaseAdapter {
 	private Context mContext;
 
 
-	public String[] img_text = { "江湖救急", "资源共享", "兼职", "培训学习", "爱拼团", "交友活动",
-			"二手", "求职面经" };
+	public String[] img_text = { "上课考试", "跑腿救急", "鹊桥交友", "求职面试", "游戏互动", "资源共享",
+			"二手交易", "兼职代理" };
 	public int[] imgs = {R.mipmap.menu1, R.mipmap.menu2,
 			R.mipmap.menu3, R.mipmap.menu4,
 			R.mipmap.menu5, R.mipmap.menu6,

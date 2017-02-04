@@ -8,10 +8,14 @@
     </string-array>
 
     <string-array name="taskType">
-        <item>救急</item>
-        <item>跑腿</item>
-        <item>兼职</item>
-        <item>培训</item>
+        <item>上课考试</item>
+        <item>跑腿救急</item>
+        <item>鹊桥交友</item>
+        <item>游戏互动</item>
+        <item>求职面试</item>
+        <item>资源共享</item>
+        <item>二手交易</item>
+        <item>兼职代理</item>
     </string-array>
 
     <string-array name="accessbility">

@@ -2,6 +2,8 @@ package com.example.JiangHu;
 
 import android.content.Context;
 
+import com.example.JiangHu.adapter.AutoRVAdapter;
+
 import java.util.List;
 
 /**

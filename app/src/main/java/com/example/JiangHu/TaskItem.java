@@ -15,6 +15,8 @@ public class TaskItem implements Serializable{
     private String content;
     private String status;//订单状态
 
+    private String type; //类别 如上课考试
+
     private String contactor;
 
     private String phoneNumber;
@@ -154,4 +156,14 @@ public class TaskItem implements Serializable{
     {
         return this.payment;
     }
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.example.JiangHu;
+package com.example.JiangHu.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
+import com.example.JiangHu.RVHolder;
+import com.example.JiangHu.ViewHolder;
 
 import java.util.List;
 

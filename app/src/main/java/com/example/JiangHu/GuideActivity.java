@@ -44,8 +44,9 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
     private ImageView[] dots;
   
     // 记录当前选中位置  
-    private int currentIndex;  
-  
+    private int currentIndex;
+    private String FIRST_FLAG;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);  
@@ -141,6 +142,8 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
         private Activity activity;
   
         private static final String SHAREDPREFERENCES_NAME = "first_pref";
+
+        private static final String FIRST_FLAG = "isFirstIn";
   
         public ViewPagerAdapter(List<View> views, Activity activity) {
             this.views = views;  
@@ -169,6 +172,8 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
         // 初始化arg1位置的界面  
         @Override
         public Object instantiateItem(View arg0, int arg1) {
+            if(isGuided())
+                goHome();
             ((ViewPager) arg0).addView(views.get(arg1), 0);
             if (arg1 == views.size() - 1) {  
                 Button mStartWeiboImageButton = (Button) arg0
@@ -186,8 +191,8 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
                 });  
             }  
             return views.get(arg1);  
-        }  
-  
+        }
+
         private void goHome() {  
             // 跳转  
             Intent intent = new Intent(activity, MainActivity.class);
@@ -203,11 +208,18 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
             SharedPreferences preferences = activity.getSharedPreferences(
                     SHAREDPREFERENCES_NAME, Context.MODE_PRIVATE);
             Editor editor = preferences.edit();
-            // 存入数据  
-            editor.putBoolean("isFirstIn", false);  
+            // 存入数据
+            editor.putBoolean(FIRST_FLAG, true);
             // 提交修改  
             editor.commit();  
-        }  
+        }
+
+        private boolean isGuided() {
+            SharedPreferences preferences = activity.getSharedPreferences(
+                    SHAREDPREFERENCES_NAME, Context.MODE_PRIVATE);
+            boolean isFirst = preferences.getBoolean(FIRST_FLAG, false);
+            return  isFirst;
+        }
   
         // 判断是否由对象生成界面  
         @Override

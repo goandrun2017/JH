@@ -185,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                 }
+                ft.addToBackStack(null);
 				ft.commit();
                 MainActivity.this.checkIndexActivity(checkedId);
                 //通过fragments这个adapter还有index来替换帧布局中的内容
@@ -197,7 +198,10 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             Fragment fragment = new HomeFragment();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, TAGS[0]).commit();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.content_frame, fragment, TAGS[0]);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
         }
         Intent intent = new Intent(this, LoginActivity.class);
@@ -273,6 +277,7 @@ public class MainActivity extends AppCompatActivity {
                     ft.hide(fragment);
                 }
             }
+            ft.addToBackStack(null);
             ft.commit();
         }
     }

@@ -1,5 +1,6 @@
 package com.example.JiangHu.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,9 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.JiangHu.BannerModel;
+import com.example.JiangHu.MainActivity;
 import com.example.JiangHu.MyTaskAdapter;
 import com.example.JiangHu.R;
 import com.example.JiangHu.TaskItem;
@@ -25,6 +28,8 @@ import com.sivin.BannerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.JiangHu.Constant.TAGS;
 
 /**
  * Created by zhibinxiao on 2017/2/2.
@@ -38,6 +43,8 @@ public class HomeFragment extends Fragment
     private MyGridView myGridView;
 
     private Banner mBanner;
+
+    private List<BannerModel> imgs = new ArrayList<BannerModel>();
 
 
     //private MyTaskAdapter adapter;
@@ -83,7 +90,7 @@ public class HomeFragment extends Fragment
     {
         mBanner = (Banner) view.findViewById(R.id.id_banner);
 
-        List<BannerModel> imgs = new ArrayList<BannerModel>();
+
         BannerModel bannerModel = new BannerModel();
         bannerModel.setImageId(R.mipmap.title1);
         bannerModel.setTips("江湖秘籍");
@@ -126,6 +133,28 @@ public class HomeFragment extends Fragment
                         .into(imageView);
             }
         };
+
+        mBanner.setOnBannerItemClickListener(new Banner.OnBannerItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                if(position != 0){
+                    Toast.makeText(getContext(), imgs.get(position).getTips()+" 建设中",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    FragmentManager fm = ((MainActivity)getContext()).getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    Fragment fragment2 = fm.findFragmentByTag(TAGS[1]);
+                    if (fragment2 == null) {
+                        fragment2 = new TaskListTabFrament();
+                        ft.add(R.id.content_frame, fragment2, TAGS[1]);
+                    } else {
+                        ft.show(fragment2);
+                    }
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
+            }
+        });
         mBanner.setBannerAdapter(adapter);
         mBanner.notifiDataHasChanged();
     }

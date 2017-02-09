@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="#80FFFFE0">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:paddingTop="56dp"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:paddingRight="24dp"
+        android:theme="@style/AppTheme.Transparent"
+        android:background="@color/primary"
+        android:layout_height="match_parent">
 
         <ImageView android:src="@drawable/jianghulogo"
             android:layout_width="wrap_content"
@@ -84,6 +87,13 @@
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:textSize="16dip"/>
+
+        <ImageView android:src="@color/primary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="100dp" />
 
     </LinearLayout>
 </ScrollView>

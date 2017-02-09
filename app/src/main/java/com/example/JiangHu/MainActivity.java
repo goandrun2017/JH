@@ -7,12 +7,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -145,17 +150,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.radio_discover:
-//                        if (fragment2 == null) {
-//                            fragment2 = new TaskListTabFrament();
-//                            ft.add(R.id.content_frame, fragment2, TAGS[1]);
-//                        } else {
-//                            ft.show(fragment2);
-//                        } if (fragment2 == null) {
-//                            fragment2 = new TaskListTabFrament();
-//                            ft.add(R.id.content_frame, fragment2, TAGS[1]);
-//                        } else {
-//                            ft.show(fragment2);
-//                        }
+                        if (fragment2 == null) {
+                            fragment2 = new TaskListTabFrament();
+                            ft.add(R.id.content_frame, fragment2, TAGS[1]);
+                        } else {
+                            ft.show(fragment2);
+                        }
                         break;
                     case R.id.radio_publish:
                         if (fragment3 == null) {
@@ -212,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
 //        Intent intent1 = new Intent(this, MyImageActivity.class);
         startActivity(intent);
+
     }
 
     public void checkIndexActivity(int index){

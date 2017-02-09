@@ -3,6 +3,7 @@ package com.example.JiangHu.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 
+import com.example.JiangHu.MainActivity;
 import com.example.JiangHu.R;
 import com.example.JiangHu.MyProfileActivity;
 
@@ -44,7 +46,20 @@ public class MeFagment extends Fragment {
         initView(view);
         return view;
     }
-
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        MainActivity activity = (MainActivity) getActivity();
+        Toolbar toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.GONE);
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        MainActivity activity = (MainActivity) getActivity();
+        Toolbar toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.VISIBLE);
+    }
 
     private void initView(View view) {
 

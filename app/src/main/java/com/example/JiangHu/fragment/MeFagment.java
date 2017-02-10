@@ -16,8 +16,12 @@ import android.widget.SimpleAdapter;
 import com.example.JiangHu.Constant;
 import com.example.JiangHu.MainActivity;
 import com.example.JiangHu.MyProfileActivity;
+<<<<<<< Updated upstream
 import com.example.JiangHu.MyTaskAdapter;
 import com.example.JiangHu.R;
+=======
+import com.example.JiangHu.grid.MyGridAdapter;
+>>>>>>> Stashed changes
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +39,15 @@ public class MeFagment extends Fragment {
     private int[] pic_path = {R.drawable.completed, R.drawable.ongoing, R.drawable.published, R.drawable.evaluated};
     private String[] texts = {"已完成","进行中","我发布的","待评价"};
 
+<<<<<<< Updated upstream
+=======
+
+    private LinearLayout ll_user_life;
+    private LinearLayout ll_user_members;
+    private LinearLayout ll_user_store;
+    private LinearLayout ll_user_opinion;
+
+>>>>>>> Stashed changes
     private ImageView myprofiles;
 
 
@@ -82,6 +95,7 @@ public class MeFagment extends Fragment {
         });
 
 
+<<<<<<< Updated upstream
         my_gridView_user = (GridView) view.findViewById(R.id.gridview);
 
         List<Map<String, Object>> lstImageItem = new ArrayList<Map<String, Object>>();
@@ -97,6 +111,19 @@ public class MeFagment extends Fragment {
                                  new String[] {"taskImage","taskText"},
                                  new int[]{R.id.taskImage,R.id.taskText});
         my_gridView_user.setAdapter(simpleAdapter);
+=======
+        my_gridView_user = (GridView) view.findViewById(R.id.static_grid_view);
+
+        MyGridAdapter adapter = new MyGridAdapter(getContext());
+        adapter.setImg_text(texts);
+        adapter.setImgs(pic_path);
+        my_gridView_user.setAdapter(adapter);
+        my_gridView_user.setNumColumns(texts.length);
+
+        my_gridView_user.setAdapter(adapter);
+
+
+>>>>>>> Stashed changes
 
     }
 

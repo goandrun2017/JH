@@ -17,21 +17,8 @@ public class MyProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        Integer picID = intent.getIntExtra("select", 0);
-        if(picID != 0){
+
             setContentView(R.layout.splash);
-            ImageView myprofiles = (ImageView) findViewById(R.id.splashImage);
-            myprofiles.setBackgroundResource(picID);
-            myprofiles.setClickable(true);
-            myprofiles.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
-        }else{
-            setContentView(R.layout.my_profile_layout);
-        }
+
     }
 }

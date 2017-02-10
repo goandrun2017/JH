@@ -22,13 +22,16 @@ public class MyGridAdapter extends BaseAdapter {
 	private Context mContext;
 
 
-	public String[] img_text = { "上课考试", "跑腿救急", "鹊桥交友", "求职面试", "游戏互动", "资源共享",
-			"二手交易", "兼职代理" };
-	public int[] imgs = {R.mipmap.menu1, R.mipmap.menu2,
-			R.mipmap.menu3, R.mipmap.menu4,
-			R.mipmap.menu5, R.mipmap.menu6,
-			R.mipmap.menu7, R.mipmap.menu8};
+	public void setImg_text(String[] img_text) {
+		this.img_text = img_text;
+	}
 
+	public void setImgs(int[] imgs) {
+		this.imgs = imgs;
+	}
+
+	public String[] img_text ;
+	public int[] imgs ;
 	public MyGridAdapter(Context mContext) {
 		super();
 		this.mContext = mContext;

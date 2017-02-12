@@ -81,7 +81,7 @@ public class Constant {
             orderListItem1.setContent(info);
             orderListItem1.setPayment(price + "元");
             orderListItem1.setStatus(Status_standby);
-            orderListItem1.setBeginDate("2015-10-26 10:33");
+            orderListItem1.setBeginDate("2017-02-14 10:20");
             orderListItem1.setAcccessbility(access);
             orderListItem1.setDistance(distance);
             orderListItem1.setImageID(imageID);

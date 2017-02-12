@@ -34,7 +34,7 @@ public class TaskListTabFrament extends Fragment {
         orderListItem1.setContent(info);
         orderListItem1.setPayment(price + "元");
         orderListItem1.setStatus("2");
-        orderListItem1.setBeginDate("2015-10-26 10:33");
+        orderListItem1.setBeginDate("2017-02-14 10:33");
         orderListItem1.setAcccessbility(access);
         return orderListItem1;
     }

@@ -63,6 +63,13 @@ public class Constant {
         TaskFactory.add(createNewItem(3,5, "借吉他", "哪位同学有吉他，借用三天", "30", "2", 300, R.drawable.item_025));
         TaskFactory.add(createNewItem(4,5, "借自行车", "借自行车一天", "10", "1", 400, R.drawable.item_026));
         TaskFactory.add(createNewItem(5,1, "代资料", "天下午有去深圳大学的同学吗？顺便帮忙代一份资料过去", "6", "2", 2500, R.drawable.item_027));
+
+        TaskFactory.add(createNewItem(0,5, "江湖通缉令", "邀请五位同学下载江湖app，获取随机红包！", "X", "2", 0, R.drawable.item_028));
+        TaskFactory.add(createNewItem(0,7, "华山论剑", "根据任务积分评选盟主，每个学校一个盟主！", "X", "2", 0, R.drawable.item_029));
+        TaskFactory.add(createNewItem(0,7, "诚招江湖代理", "负责app推广，待遇面议！", "6", "X", 0, R.drawable.item_030));
+        TaskFactory.add(createNewItem(0,4, "软文推广", "转发排名前1000位，获取小米手环！", "6", "X", 0, R.drawable.item_031));
+        TaskFactory.add(createNewItem(0,4, "积少成多", "获取1000银两，可换取500m移动流量！", "6", "X", 0, R.drawable.item_032));
+
 //        TaskFactory.get(0).setStatus("1");
 //        TaskFactory.get(1).setStatus("1");
     }

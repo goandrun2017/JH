@@ -172,8 +172,8 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
         // 初始化arg1位置的界面  
         @Override
         public Object instantiateItem(View arg0, int arg1) {
-            if(isGuided())
-                goHome();
+//            if(isGuided())
+//                goHome();
             ((ViewPager) arg0).addView(views.get(arg1), 0);
             if (arg1 == views.size() - 1) {  
                 Button mStartWeiboImageButton = (Button) arg0

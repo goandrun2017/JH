@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MyProfileActivity.class);
         switch (index) {
             case R.id.radio_info://消息
-                intent.putExtra("select", R.drawable.demo_info);
+                intent.putExtra("select", R.drawable.demo_info_lite);
                 startActivity(intent);
                 break;
             default:

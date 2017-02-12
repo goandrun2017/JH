@@ -58,7 +58,18 @@
                     android:layout_marginLeft="@dimen/space_8"
                     android:layout_marginBottom="@dimen/space_8"
                     android:layout_alignParentTop="true" />
-
+                <TextView
+                    android:id="@+id/distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/titleImageView"
+                    android:ellipsize="end"
+                    android:textColor="@color/awesome_orange"
+                    android:textSize="@dimen/text_size_18"
+                    tools:text="这是距离"
+                    android:layout_marginLeft="@dimen/space_100"
+                    android:layout_marginBottom="@dimen/space_8"
+                    android:layout_alignParentTop="true" />
                 <TextView
                     android:id="@+id/info"
                     android:layout_width="match_parent"
@@ -102,17 +113,16 @@
                     android:layout_alignBottom="@+id/titleImageView" />
 
                 <TextView
-                    android:id="@+id/orderStatus"
+                    android:id="@+id/orderType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:textColor="@color/awesome_orange"
                     android:textSize="@dimen/text_size_16"
-                    tools:text="未完成"
+                    tools:text="类别"
                     android:layout_alignTop="@+id/orderPrice"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
-
             </RelativeLayout>
 
         </LinearLayout>

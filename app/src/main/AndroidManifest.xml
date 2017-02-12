@@ -20,6 +20,8 @@
         <activity android:name=".SignupActivity"></activity>
         <activity android:name=".LoginActivity" android:theme="@style/AppTheme.Transparent"></activity>
         <activity android:name=".MyProfileActivity"></activity>
+        <activity android:name=".ItemDetailActivity"></activity>
+        <activity android:name=".ItemListActivty"></activity>
 
         <!--<activity android:name=".ViewPagerActivity"></activity>-->
     </application>

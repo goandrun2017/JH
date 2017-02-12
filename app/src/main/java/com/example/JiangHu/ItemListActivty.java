@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class ItemListActivty extends AppCompatActivity {
 
-    private String type = "";
+    private int type = -1;
     public MyTaskAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private List<TaskItem> taskList = new ArrayList<>();
@@ -25,7 +25,7 @@ public class ItemListActivty extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_each_tab);
-        type = getIntent().getStringExtra("type");
+        type = getIntent().getIntExtra(Constant.TYPE, -1);
         initView();
     }
 
@@ -65,7 +65,7 @@ public class ItemListActivty extends AppCompatActivity {
         taskList.clear();
         for (int i = 0; i < Constant.TaskFactory.size(); i++)
         {
-            if (Constant.TaskFactory.get(i).getTitle() == type)
+            if (Constant.TaskFactory.get(i).getType() == type)
                 taskList.add(Constant.TaskFactory.get(i));
         }
 

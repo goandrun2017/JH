@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.JiangHu.Constant;
 import com.example.JiangHu.ItemListActivty;
 import com.example.JiangHu.R;
 
@@ -52,9 +53,6 @@ public class MyGridAdapter extends BaseAdapter {
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(mContext, ItemListActivty.class);
-		intent.putExtra("type", img_text[position]);
-		mContext.startActivity(intent);
 
 		return position;
 	}

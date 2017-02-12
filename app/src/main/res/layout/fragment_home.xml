@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:src="@mipmap/index_img"
+                    android:src="@mipmap/backpack"
                     android:adjustViewBounds="false"
                     android:cropToPadding="false" />
 
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:src="@mipmap/index_img"
+                    android:src="@mipmap/books"
                     android:adjustViewBounds="false"
                     android:cropToPadding="false" />
 

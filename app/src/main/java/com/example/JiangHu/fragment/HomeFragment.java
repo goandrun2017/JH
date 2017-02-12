@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.JiangHu.BannerModel;
+import com.example.JiangHu.Constant;
+import com.example.JiangHu.ItemListActivty;
 import com.example.JiangHu.MainActivity;
 import com.example.JiangHu.MyTaskAdapter;
 import com.example.JiangHu.R;
@@ -89,8 +91,7 @@ public class HomeFragment extends Fragment
     private void buildupGrid(View view) {
         myGridView=(MyGridView) view.findViewById(R.id.gridview);
         MyGridAdapter adapter = new MyGridAdapter(getContext());
-        adapter.setImg_text(new String[]{ "上课考试", "跑腿救急", "鹊桥交友", "求职面试", "游戏互动", "资源共享",
-                "二手交易", "兼职代理" });
+        adapter.setImg_text(Constant.MissionTypes);
         adapter.setImgs(new int[]{R.mipmap.menu1, R.mipmap.menu2,
                 R.mipmap.menu3, R.mipmap.menu4,
                 R.mipmap.menu5, R.mipmap.menu6,
@@ -99,7 +100,9 @@ public class HomeFragment extends Fragment
         myGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(),"adf",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), ItemListActivty.class);
+                intent.putExtra(Constant.TYPE, position);
+                getContext().startActivity(intent);
             }
         });
     }

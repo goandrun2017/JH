@@ -1,6 +1,12 @@
 package com.example.JiangHu;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.JiangHu.adapter.AutoRVAdapter;
 
@@ -26,33 +32,40 @@ public class MyTaskAdapter extends AutoRVAdapter {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-        TaskItem item=(TaskItem) list.get(position);
+        final TaskItem item=(TaskItem) list.get(position);
         holder.getTextView(R.id.titleTextView).setText(item.getTitle());
         holder.getTextView(R.id.dateTextView).setText(item.getBeginDate());
+        holder.getTextView(R.id.dateTextView).setText(item.getBeginDate());
+        holder.getImageView(R.id.titleImageView).setImageResource(item.getImageID());
+
 
         String status = item.getStatus();
         if (status.equals("1")){
             status = "未完成";
-            holder.getTextView(R.id.orderStatus).setTextColor(context.getResources().getColor(R.color.awesome_orange));
+            holder.getTextView(R.id.orderType).setTextColor(context.getResources().getColor(R.color.awesome_orange));
         }else{
             status = "任务完成";
-            holder.getTextView(R.id.orderStatus).setTextColor(context.getResources().getColor(R.color.awesome_gray));
+            holder.getTextView(R.id.orderType).setTextColor(context.getResources().getColor(R.color.awesome_gray));
         }
-        holder.getTextView(R.id.orderStatus).setText(status);
+
+        String missionType = Constant.MissionTypes[item.getType()];
+        holder.getTextView(R.id.orderType).setText(missionType);
         holder.getTextView(R.id.info).setText(item.getContent());
 
 
         holder.getTextView(R.id.orderPrice).setText(item.getPayment());
+        holder.getTextView(R.id.distance).setText(String.format("%.1f", item.getDistance()/1000.0) + "km");
 
         holder.getImageView(R.id.titleImageView).setImageDrawable(context.getResources().getDrawable(R.mipmap.index_img));
-//
-//        holder.getConvertView().findViewById(R.id.item_order_layout).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//               // Toast.makeText(context, "点击事件"+position, Toast.LENGTH_LONG).show();
-//                Intent intent = new Intent(context, OrderDetailActivity.class);
-//                context.startActivity(intent);
-//            }
-//        });
+
+        holder.getConvertView().findViewById(R.id.item_order_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ItemDetailActivity.class);
+                intent.putExtra(Constant.ID, item.getId());
+                context.startActivity(intent);
+            }
+        });
+
     }
 }

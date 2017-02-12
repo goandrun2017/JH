@@ -9,13 +9,16 @@ import java.io.Serializable;
  */
 public class TaskItem implements Serializable{
 
+    private int id;
     private String university;
     private String location;
     private String title;   //标题
     private String content;
     private String status;//订单状态
 
-    private String type; //类别 如上课考试
+    private int userID;
+
+    private int type; //类别 如上课考试
 
     private String contactor;
 
@@ -33,7 +36,19 @@ public class TaskItem implements Serializable{
 
     private String acccessbility;
 
+    private int distance;
 
+    private int imageID;
+
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getTitle() {
         return title;
     }
@@ -63,14 +78,34 @@ public class TaskItem implements Serializable{
     @Override
     public String toString() {
         return "TaskItem{" +
+                ", id='" + id + '\'' +
+                ", userID='" + userID + '\'' +
                 ", title='" + title + '\'' +
                 ", price='" + payment + '\'' +
                 ", status='" + status + '\'' +
                 ", content='" + content + '\'' +
                 ", between[" + beginDate + ","+ endDate+"]" +
+                ", distance='" + distance + '\'' +
                 '}';
     }
 
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
 
     public String getUniversity() {
         return university;
@@ -158,12 +193,21 @@ public class TaskItem implements Serializable{
     }
 
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
+
+    public int getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(int imageID) {
+        this.imageID = imageID;
+    }
+
 
 }

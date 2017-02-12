@@ -17,12 +17,6 @@ public class ItemDetailActivity extends AppCompatActivity {
     private static final String ARG_POSITION = "position";
 
     private int id;
-//    private String name = "";
-//    private int price;
-//    private String content = "";
-//    private String contactNumber = "";
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +34,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         help_content.setText(taskItem.getContent());
         price.setText("赏 "+taskItem.getPayment());
         phone_number.setText("手机号码: "+taskItem.getPhoneNumber());
-        personImg.setImageResource(personInfo.getImageID());
+        personImg.setImageResource(taskItem.getImageID());
 
 
         TextView name = (TextView) findViewById(R.id.person_name);

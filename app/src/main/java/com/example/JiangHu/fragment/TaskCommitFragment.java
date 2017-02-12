@@ -67,7 +67,10 @@ public class TaskCommitFragment extends Fragment {
                 item.setContactor(contactorEdit.getText().toString());
                 item.setPhoneNumber(phoneNumberEdit.getText().toString());
                 item.setPayment(paymentEdit.getText().toString());
-                item.setStatus("1");
+                item.setDistance(1000);
+                item.setUserID(0);
+                item.setImageID(R.drawable.mask);
+                item.setStatus("0");
 
                 Constant.TaskFactory.add(0,item);
 

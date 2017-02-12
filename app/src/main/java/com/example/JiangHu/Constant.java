@@ -27,6 +27,7 @@ public class Constant {
     public static String TYPE = "type";
 
     static {
+        personMap.put(0, createNewPerson("大美女", R.drawable.mask));
         personMap.put(personMap.size(), createNewPerson("小王", R.drawable.head_001));
         personMap.put(personMap.size(), createNewPerson("小李", R.drawable.head_002));
         personMap.put(personMap.size(), createNewPerson("小张", R.drawable.head_003));

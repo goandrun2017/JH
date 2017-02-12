@@ -2,31 +2,27 @@ package com.example.JiangHu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.JiangHu.fragment.DisplayFragment;
 import com.example.JiangHu.fragment.HomeFragment;
 import com.example.JiangHu.fragment.MeFagment;
 import com.example.JiangHu.fragment.TaskCommitFragment;
-import com.example.JiangHu.fragment.TaskListTabFrament;
 
 import static com.example.JiangHu.Constant.TAGS;
 public class MainActivity extends AppCompatActivity {
@@ -151,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.radio_discover:
                         if (fragment2 == null) {
-                            fragment2 = new TaskListTabFrament();
+                            fragment2 = getFragment(R.drawable.demo_discover);
                             ft.add(R.id.content_frame, fragment2, TAGS[1]);
                         } else {
                             ft.show(fragment2);
@@ -167,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.radio_info:
                         if (fragment4 == null) {
-                            fragment4 = new HomeFragment();
+                            fragment4 = getFragment(R.drawable.demo_info_lite);
                             ft.add(R.id.content_frame, fragment4, TAGS[3]);
                         } else {
                             ft.show(fragment4);
@@ -192,12 +188,22 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ft.addToBackStack(null);
 				ft.commit();
-                MainActivity.this.checkIndexActivity(checkedId);
+               // MainActivity.this.checkIndexActivity(checkedId);
                 //通过fragments这个adapter还有index来替换帧布局中的内容
                 //Fragment fragment = (Fragment) fragments.instantiateItem(mHomeContent, index);
                 //一开始将帧布局中 的内容设置为第一个
                 //fragments.setPrimaryItem(mHomeContent, 0, fragment);
                 //fragments.finishUpdate(mHomeContent);
+            }
+
+            @NonNull
+            private Fragment getFragment(int imageID) {
+                Fragment fragment2;
+                fragment2 = new DisplayFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("ImageSource", imageID);
+                fragment2.setArguments(bundle);
+                return fragment2;
             }
         });
         if (savedInstanceState == null) {
@@ -215,17 +221,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void checkIndexActivity(int index){
-        Intent intent = new Intent(MainActivity.this, MyProfileActivity.class);
-        switch (index) {
-            case R.id.radio_info://消息
-                intent.putExtra("select", R.drawable.demo_info_lite);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-    }
+//    public void checkIndexActivity(int index){
+//        Intent intent = new Intent(MainActivity.this, MyProfileActivity.class);
+//        switch (index) {
+//            case R.id.radio_info://消息
+//                intent.putExtra("select", R.drawable.demo_info_lite);
+//                startActivity(intent);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
     private void setUpToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

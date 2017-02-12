@@ -115,8 +115,11 @@ public class EachTabFragment extends Fragment {
         taskList.clear();
         for (int i = 0; i < Constant.TaskFactory.size(); i++)
         {
-            if (Integer.parseInt(Constant.TaskFactory.get(i).getAcccessbility()) == mPage)
-            taskList.add(Constant.TaskFactory.get(i));
+            TaskItem taskItem = Constant.TaskFactory.get(i);
+            if(!taskItem.getStatus().equals(Constant.Status_standby))
+                continue;
+            if (Integer.parseInt(taskItem.getAcccessbility()) == mPage)
+            taskList.add(taskItem);
         }
     }
 

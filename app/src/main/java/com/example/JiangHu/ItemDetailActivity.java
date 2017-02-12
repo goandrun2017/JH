@@ -38,7 +38,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         PersonInfo personInfo = (PersonInfo) Constant.personMap.get(taskItem.getUserID());
         person_name.setText(personInfo.getName());
         help_content.setText(taskItem.getContent());
-        price.setText("赏 "+taskItem.getPayment()+"元");
+        price.setText("赏 "+taskItem.getPayment());
         phone_number.setText("手机号码: "+taskItem.getPhoneNumber());
         personImg.setImageResource(personInfo.getImageID());
 

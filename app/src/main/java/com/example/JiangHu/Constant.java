@@ -13,6 +13,10 @@ public class Constant {
     public static String[] TAGS = {"homepage", "discover", "submit", "message", "profile"};
     public static String[] MissionTypes = new String[]{ "上课考试", "跑腿救急", "鹊桥交友", "求职面试", "游戏互动", "资源共享",
             "二手交易", "兼职代理" };
+    public static String Status_standby = "0";
+    public static String Status_doing = "1";
+    public static String Status_done = "2";
+    public static String [] StatusType = {Status_standby, Status_doing, Status_done};
     public static List<TaskItem> TaskFactory = new ArrayList<>();
     public static Map<Integer,PersonInfo> personMap = new HashMap<>();
     public static String NAME = "name";
@@ -58,8 +62,8 @@ public class Constant {
         TaskFactory.add(createNewItem(3,5, "借吉他", "哪位同学有吉他，借用三天", "30", "2", 300, R.drawable.item_025));
         TaskFactory.add(createNewItem(4,5, "借自行车", "借自行车一天", "10", "1", 400, R.drawable.item_026));
         TaskFactory.add(createNewItem(5,1, "代资料", "天下午有去深圳大学的同学吗？顺便帮忙代一份资料过去", "6", "2", 2500, R.drawable.item_027));
-        TaskFactory.get(0).setStatus("1");
-        TaskFactory.get(1).setStatus("1");
+//        TaskFactory.get(0).setStatus("1");
+//        TaskFactory.get(1).setStatus("1");
     }
 
     private static PersonInfo createNewPerson(String name, int imageID) {
@@ -75,11 +79,12 @@ public class Constant {
             orderListItem1.setTitle(title);
             orderListItem1.setContent(info);
             orderListItem1.setPayment(price + "元");
-            orderListItem1.setStatus("2");
+            orderListItem1.setStatus(Status_standby);
             orderListItem1.setBeginDate("2015-10-26 10:33");
             orderListItem1.setAcccessbility(access);
             orderListItem1.setDistance(distance);
             orderListItem1.setImageID(imageID);
+            orderListItem1.setPhoneNumber("13818881666");
             return orderListItem1;
         }
 

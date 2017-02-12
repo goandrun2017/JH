@@ -35,28 +35,24 @@ public class MyTaskAdapter extends AutoRVAdapter {
         final TaskItem item=(TaskItem) list.get(position);
         holder.getTextView(R.id.titleTextView).setText(item.getTitle());
         holder.getTextView(R.id.dateTextView).setText(item.getBeginDate());
-        holder.getTextView(R.id.dateTextView).setText(item.getBeginDate());
         holder.getImageView(R.id.titleImageView).setImageResource(item.getImageID());
 
 
         String status = item.getStatus();
         if (status.equals("1")){
-            status = "未完成";
+            status = Constant.Status_doing;
             holder.getTextView(R.id.orderType).setTextColor(context.getResources().getColor(R.color.awesome_orange));
         }else{
-            status = "任务完成";
+            status = Constant.Status_done;
             holder.getTextView(R.id.orderType).setTextColor(context.getResources().getColor(R.color.awesome_gray));
         }
 
         String missionType = Constant.MissionTypes[item.getType()];
         holder.getTextView(R.id.orderType).setText(missionType);
         holder.getTextView(R.id.info).setText(item.getContent());
-
-
         holder.getTextView(R.id.orderPrice).setText(item.getPayment());
         holder.getTextView(R.id.distance).setText(String.format("%.1f", item.getDistance()/1000.0) + "km");
-
-        holder.getImageView(R.id.titleImageView).setImageDrawable(context.getResources().getDrawable(R.mipmap.index_img));
+        holder.getImageView(R.id.titleImageView).setImageResource(item.getImageID());
 
         holder.getConvertView().findViewById(R.id.item_order_layout).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -44,7 +44,7 @@ public class ItemDetailActivity extends AppCompatActivity {
 
 
         TextView name = (TextView) findViewById(R.id.person_name);
-        Button button1 = (Button) findViewById(R.id.button);
+        Button button1 = (Button) findViewById(R.id.btn_task_acceptance);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

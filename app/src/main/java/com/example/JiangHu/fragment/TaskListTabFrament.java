@@ -79,12 +79,6 @@ public class TaskListTabFrament extends Fragment {
             return tabTitles.length;
         }
 
-//        @Override
-//        public Object instantiateItem(ViewGroup container, int position) {
-//            EachTabFragment fragment  = (EachTabFragment) super.instantiateItem(container, position);
-//            fragment.refreshData();
-//            return fragment;
-//        }
 
         @Override
         public Fragment getItem(int position) {

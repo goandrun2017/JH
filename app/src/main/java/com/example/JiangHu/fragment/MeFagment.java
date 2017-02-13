@@ -21,6 +21,8 @@ import com.example.JiangHu.MyTaskListActivity;
 import com.example.JiangHu.R;
 import com.example.JiangHu.grid.MyGridAdapter;
 
+import java.util.ArrayList;
+
 
 /**
  *  Created by nick on 15/10/21.
@@ -48,7 +50,6 @@ public class MeFagment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        MainActivity activity = (MainActivity) getActivity();
     }
     @Override
     public void onDestroyView() {
@@ -61,7 +62,7 @@ public class MeFagment extends Fragment {
     private void initView(View view)
     {
 
-        MyTaskAdapter adapter = new MyTaskAdapter(getContext(), Constant.TaskFactory.subList(3,8));
+        MyTaskAdapter adapter = new MyTaskAdapter(getContext(), new ArrayList<>(Constant.TaskFactory.subList(3,8)));
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_recommend_tasks);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -86,6 +87,8 @@ public class MeFagment extends Fragment {
         my_gridView_user.setNumColumns(texts.length);
         my_gridView_user.setAdapter(gridAdapter);
 
+        myalltasks = (ImageView) view.findViewById(R.id.my_all_tasks);
+        myalltasks.setClickable(true);
         myalltasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -68,13 +68,12 @@ public class TaskCommitFragment extends Fragment {
                 item.setPhoneNumber(phoneNumberEdit.getText().toString());
                 item.setPayment(paymentEdit.getText().toString());
                 item.setDistance(1000);
-                item.setUserID(0);
+                item.setUserID(100);
                 item.setImageID(R.drawable.mask);
                 item.setStatus("0");
 
                 Constant.TaskFactory.add(0,item);
 
-                FragmentManager fm = getFragmentManager();
                 TaskListTabFrament fragment2 = (TaskListTabFrament) getActivity().getSupportFragmentManager().findFragmentByTag(Constant.TAGS[0]).getChildFragmentManager().getFragments().get(0);
 
                 if (fragment2 != null) {

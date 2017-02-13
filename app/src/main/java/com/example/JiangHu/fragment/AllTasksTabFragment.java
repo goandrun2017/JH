@@ -28,7 +28,6 @@ public class AllTasksTabFragment extends EachTabFragment {
 
     public static AllTasksTabFragment newInstance(int page) {
         Bundle args = new Bundle();
-
         args.putInt("page", page);
         AllTasksTabFragment fragment = new AllTasksTabFragment();
         fragment.setArguments(args);

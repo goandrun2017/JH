@@ -177,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             ft.show(fragment5);
                         }
+                        break;
                     default:
                         if (fragment1 == null) {
                             fragment1 = new HomeFragment();

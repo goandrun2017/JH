@@ -18,7 +18,6 @@ public class MyTasksTabFragment extends EachTabFragment {
 
     public static MyTasksTabFragment newInstance(int page) {
         Bundle args = new Bundle();
-
         args.putInt("page", page);
         MyTasksTabFragment fragment = new MyTasksTabFragment();
         fragment.setArguments(args);
@@ -26,13 +25,21 @@ public class MyTasksTabFragment extends EachTabFragment {
     }
 
     @Override
-    public List<TaskItem> refreshData() {
+    public List<TaskItem> refreshData()
+    {
         List<TaskItem> taskList = new ArrayList<>();
         for(TaskItem item: Constant.TaskFactory)
         {
-            if (item.getUserID()== 100)
+            if (mPage == 0 && item.getUserID()== 100)
             {
                 taskList.add(item);
+            }
+            else
+            {
+                if (item.getTaker() ==100)
+                {
+                    taskList.add(item);
+                }
             }
         }
         return taskList;

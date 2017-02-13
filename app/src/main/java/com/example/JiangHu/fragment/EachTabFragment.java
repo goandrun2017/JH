@@ -21,11 +21,11 @@ import java.util.List;
  * Created by zhibinxiao on 2017/2/2.
  */
 
-public class EachTabFragment extends Fragment {
+public abstract class EachTabFragment extends Fragment {
 
     public MyTaskAdapter adapter;
-    private List<TaskItem> taskList = new ArrayList<>();
-    private int mPage;
+
+    protected int mPage;
     private SwipeRefreshLayout swipeRefreshLayout;
     private String title;
 
@@ -40,35 +40,18 @@ public class EachTabFragment extends Fragment {
         return title;
     }
 
-    public void  refreshData(TaskItem newData)
-    {
-        taskList.add(0,newData);
-        adapter.notifyDataSetChanged();
-        swipeRefreshLayout.setRefreshing(false);
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt("page");
-
     }
 
-    public static EachTabFragment newInstance(int page) {
-        Bundle args = new Bundle();
-
-        args.putInt("page", page);
-        EachTabFragment fragment = new EachTabFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_each_tab, container, false);
-
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.each_swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -101,27 +84,16 @@ public class EachTabFragment extends Fragment {
         rv.setHasFixedSize(true);
 
         refreshData();
-        adapter = new MyTaskAdapter(getContext(),taskList);
+        adapter = new MyTaskAdapter(getContext(),refreshData());
         rv.setAdapter(adapter);
-
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
 
         return rootView;
     }
 
-    public void refreshData()
-    {
-        taskList.clear();
-        for (int i = 0; i < Constant.TaskFactory.size(); i++)
-        {
-            TaskItem taskItem = Constant.TaskFactory.get(i);
-            if(!taskItem.getStatus().equals(Constant.Status_standby))
-                continue;
-            if (Integer.parseInt(taskItem.getAcccessbility()) == mPage)
-            taskList.add(taskItem);
-        }
-    }
+    public  abstract List<TaskItem> refreshData();
+
 
     @Override
     public void setMenuVisibility(boolean menuVisibile) {

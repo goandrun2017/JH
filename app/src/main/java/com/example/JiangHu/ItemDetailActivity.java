@@ -45,6 +45,8 @@ public class ItemDetailActivity extends AppCompatActivity {
                 Toast.makeText(ItemDetailActivity.this,"接镖成功",Toast.LENGTH_SHORT).show();
                 Constant.alterStatus(id);
                 finish();
+
+
             }
         });
     }

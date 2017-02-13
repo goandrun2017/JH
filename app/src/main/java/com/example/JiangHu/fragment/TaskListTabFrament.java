@@ -64,7 +64,7 @@ public class TaskListTabFrament extends Fragment {
     }
 
 
-    class PagerAdapter extends FragmentStatePagerAdapter {
+    public class PagerAdapter extends FragmentStatePagerAdapter {
 
         String tabTitles[] = new String[]{"本校", "本市", "系统"};
         Context context;
@@ -91,13 +91,13 @@ public class TaskListTabFrament extends Fragment {
 
             switch (position) {
                 case 0:
-                    return EachTabFragment.newInstance(0);
+                    return AllTasksTabFragment.newInstance(0);
                 case 1:
-                    return EachTabFragment.newInstance(1);
+                    return AllTasksTabFragment.newInstance(1);
                 case 2:
-                    return EachTabFragment.newInstance(2);
+                    return AllTasksTabFragment.newInstance(2);
                 default:
-                    return EachTabFragment.newInstance(0);
+                    return AllTasksTabFragment.newInstance(0);
             }
 
         }

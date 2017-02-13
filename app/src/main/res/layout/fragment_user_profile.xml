@@ -171,6 +171,7 @@
                 android:text="查看全部任务" />
 
             <ImageView
+                android:id="@+id/my_all_tasks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"

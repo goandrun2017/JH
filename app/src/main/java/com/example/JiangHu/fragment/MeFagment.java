@@ -1,5 +1,6 @@
 package com.example.JiangHu.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import com.example.JiangHu.Constant;
 import com.example.JiangHu.MainActivity;
 import com.example.JiangHu.MyProfileActivity;
 import com.example.JiangHu.MyTaskAdapter;
+import com.example.JiangHu.MyTaskListActivity;
 import com.example.JiangHu.R;
 import com.example.JiangHu.grid.MyGridAdapter;
 
@@ -30,7 +32,9 @@ public class MeFagment extends Fragment {
     private int[] pic_path = {R.drawable.completed, R.drawable.ongoing, R.drawable.published, R.drawable.evaluated};
     private String[] texts = {"已完成","进行中","我发布的","待评价"};
 
-    private ImageView myprofiles;
+
+
+    private ImageView myprofiles,myalltasks;
 
 
     @Override
@@ -54,8 +58,8 @@ public class MeFagment extends Fragment {
         toolbar.setVisibility(View.VISIBLE);
     }
 
-    private void initView(View view) {
-
+    private void initView(View view)
+    {
 
         MyTaskAdapter adapter = new MyTaskAdapter(getContext(), Constant.TaskFactory.subList(3,8));
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_recommend_tasks);
@@ -76,15 +80,20 @@ public class MeFagment extends Fragment {
 
 
         my_gridView_user = (GridView) view.findViewById(R.id.static_grid_view);
-
         MyGridAdapter gridAdapter = new MyGridAdapter(getContext());
         gridAdapter.setImg_text(texts);
         gridAdapter.setImgs(pic_path);
         my_gridView_user.setNumColumns(texts.length);
-
         my_gridView_user.setAdapter(gridAdapter);
 
+        myalltasks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(getActivity(), MyTaskListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

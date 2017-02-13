@@ -40,6 +40,8 @@ public class TaskItem implements Serializable{
 
     private int imageID;
 
+    private int taker;
+
 
 
     public int getId() {
@@ -210,4 +212,11 @@ public class TaskItem implements Serializable{
     }
 
 
+    public int getTaker() {
+        return taker;
+    }
+
+    public void setTaker(int taker) {
+        this.taker = taker;
+    }
 }

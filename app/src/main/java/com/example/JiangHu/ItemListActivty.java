@@ -38,6 +38,7 @@ public class ItemListActivty extends AppCompatActivity {
         takerUserID = getIntent().getIntExtra(Constant.TAKERUSERID, -1);
         title = getIntent().getStringExtra(Constant.TITLE);
         TextView view = (TextView) findViewById(R.id.title);
+        view.setVisibility(title.isEmpty() ? View.GONE : View.VISIBLE);
         view.setText(title);
         initView();
     }
@@ -87,9 +88,10 @@ public class ItemListActivty extends AppCompatActivity {
         for (int i = 0; i < Constant.TaskFactory.size(); i++)
         {
             TaskItem taskItem = Constant.TaskFactory.get(i);
-            if(type > 0) {
-                if(taskItem.getStatus().equals(Constant.Status_standby))
+            if(type >= 0) {
+                if(taskItem.getType() == type && taskItem.getStatus().equals(Constant.Status_standby)) {
                     taskList.add(taskItem);
+                }
                 continue;
             }
             if(takerUserID > 0 ) {

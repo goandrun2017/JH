@@ -43,8 +43,10 @@ public class ItemDetailActivity extends AppCompatActivity {
                 if(taskItem.getUserID() == 100)
                     Toast.makeText(ItemDetailActivity.this,"不能接受自己发布的任务!",Toast.LENGTH_SHORT).show();
                 else {
+                    taskItem.setTaker(Constant.ADMIN);
+                    taskItem.setStatus(Constant.Status_doing);
+//                  Constant.alterStatus(taskTtemID);
                     Toast.makeText(ItemDetailActivity.this, "接镖成功", Toast.LENGTH_SHORT).show();
-                    Constant.alterStatus(taskTtemID);
                     finish();
                 }
             }

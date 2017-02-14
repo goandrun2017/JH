@@ -29,7 +29,7 @@
         android:id="@+id/each_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="56dp">
+        android:layout_below="@+id/toolbar">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_recycler_view"

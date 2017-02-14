@@ -32,8 +32,10 @@ public class Constant {
     public static String TAKERUSERID = "TakerUserID";
     public static String TITLE = "title";
 
+    public static int ADMIN = 100;
+
     static {
-        personMap.put(100, createNewPerson("大美女", R.drawable.mask));
+        personMap.put(ADMIN, createNewPerson("大美女", R.drawable.mask));
         personMap.put(personMap.size(), createNewPerson("小王", R.drawable.head_001));
         personMap.put(personMap.size(), createNewPerson("小李", R.drawable.head_002));
         personMap.put(personMap.size(), createNewPerson("小张", R.drawable.head_003));
@@ -102,7 +104,5 @@ public class Constant {
             return orderListItem1;
         }
 
-    public static void alterStatus(int id){
-        TaskFactory.get(id).setStatus("1");
-    }
+
 }

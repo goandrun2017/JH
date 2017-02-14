@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.JiangHu.Constant;
 import com.example.JiangHu.MyTaskAdapter;
@@ -52,7 +53,8 @@ public abstract class EachTabFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_each_tab, container, false);
-
+        View view = rootView.findViewById(R.id.toolbar);
+        view.setVisibility(View.GONE);
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.each_swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

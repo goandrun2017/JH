@@ -1,8 +1,11 @@
 package com.example.JiangHu.fragment;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.JiangHu.Constant;
+import com.example.JiangHu.R;
 import com.example.JiangHu.TaskItem;
 
 import java.util.ArrayList;

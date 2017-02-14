@@ -95,18 +95,18 @@ public class MeFagment extends Fragment {
                 intent.putExtra(Constant.TITLE, texts[position]);
                 switch (position) {
                     case 0:
-                        intent.putExtra(Constant.TAKERUSERID, 100);
+                        intent.putExtra(Constant.TAKERUSERID, Constant.ADMIN);
                         intent.putExtra(Constant.STATUS, Constant.Status_done);
                         break;
                     case 1:
-                        intent.putExtra(Constant.TAKERUSERID, 100);
+                        intent.putExtra(Constant.TAKERUSERID, Constant.ADMIN);
                         intent.putExtra(Constant.STATUS, Constant.Status_doing);
                         break;
                     case 2:
-                        intent.putExtra(Constant.USERID, 100);
+                        intent.putExtra(Constant.USERID, Constant.ADMIN);
                         break;
                     case 3:
-                        intent.putExtra(Constant.TAKERUSERID, 100);
+                        intent.putExtra(Constant.TAKERUSERID, Constant.ADMIN);
                         intent.putExtra(Constant.STATUS, Constant.Status_evaluate);
                         break;
                     default:

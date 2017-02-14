@@ -2,11 +2,8 @@ package com.example.JiangHu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,19 +13,19 @@ public class ItemDetailActivity extends AppCompatActivity {
 
     private static final String ARG_POSITION = "position";
 
-    private int id;
+    private int taskTtemID;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        id = getIntent().getIntExtra(Constant.ID, -1);
+        taskTtemID = getIntent().getIntExtra(Constant.ID, -1);
         setContentView(R.layout.item_detail);
         TextView person_name = (TextView) findViewById(R.id.person_name);
         TextView help_content = (TextView) findViewById(R.id.help_content);
         TextView price = (TextView) findViewById(R.id.price);
         TextView phone_number = (TextView) findViewById(R.id.phone_number);
         ImageView personImg = (ImageView) findViewById(R.id.iv_personImg);
-        TaskItem taskItem = Constant.TaskFactory.get(id);
+        TaskItem taskItem = Constant.TaskFactory.get(taskTtemID);
         PersonInfo personInfo = (PersonInfo) Constant.personMap.get(taskItem.getUserID());
         person_name.setText(personInfo.getName());
         help_content.setText(taskItem.getContent());
@@ -42,11 +39,14 @@ public class ItemDetailActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ItemDetailActivity.this,"接镖成功",Toast.LENGTH_SHORT).show();
-                Constant.alterStatus(id);
-                finish();
-
-
+                TaskItem taskItem = Constant.TaskFactory.get(taskTtemID);
+                if(taskItem.getUserID() == 100)
+                    Toast.makeText(ItemDetailActivity.this,"不能接受自己发布的任务!",Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(ItemDetailActivity.this, "接镖成功", Toast.LENGTH_SHORT).show();
+                    Constant.alterStatus(taskTtemID);
+                    finish();
+                }
             }
         });
     }

@@ -86,11 +86,13 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
         // 循环取得小点图片  
         for (int i = 0; i < views.size(); i++) {  
             dots[i] = (ImageView) ll.getChildAt(i);
-            dots[i].setEnabled(true);// 都设为灰色  
+            dots[i].setEnabled(true);// 都设为灰色
+            dots[i].setImageResource(R.drawable.dot);
         }  
   
         currentIndex = 0;  
-        dots[currentIndex].setEnabled(false);// 设置为白色，即选中状态  
+        dots[currentIndex].setEnabled(false);// 设置为白色，即选中状态
+        dots[currentIndex].setImageResource(R.drawable.dot1);
     }  
   
     private void setCurrentDot(int position) {  
@@ -99,8 +101,11 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
             return;  
         }  
   
-        dots[position].setEnabled(false);  
-        dots[currentIndex].setEnabled(true);  
+        dots[position].setEnabled(false);
+        dots[position].setImageResource(R.drawable.dot1);
+
+        dots[currentIndex].setEnabled(true);
+        dots[currentIndex].setImageResource(R.drawable.dot);
   
         currentIndex = position;  
     }  

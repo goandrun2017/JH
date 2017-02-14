@@ -16,6 +16,7 @@ public class Constant {
     public static String Status_standby = "0";
     public static String Status_doing = "1";
     public static String Status_done = "2";
+    public static String Status_evaluate = "3";
     public static String [] StatusType = {Status_standby, Status_doing, Status_done};
     public static List<TaskItem> TaskFactory = new ArrayList<>();
     public static Map<Integer,PersonInfo> personMap = new HashMap<>();
@@ -24,7 +25,12 @@ public class Constant {
     public static String PRICE ="price";
     public static String CONTENT = "content";
     public static String CONTACTNUMBER = "contactNumber";
+
     public static String TYPE = "type";
+    public static String STATUS = "Status";
+    public static String USERID = "UserID";
+    public static String TAKERUSERID = "TakerUserID";
+    public static String TITLE = "title";
 
     static {
         personMap.put(100, createNewPerson("大美女", R.drawable.mask));

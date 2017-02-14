@@ -61,6 +61,7 @@ public class TaskCommitFragment extends Fragment {
                 item.setTitle(headerLineEdit.getText().toString());
                 item.setContent(descEdit.getText().toString());
                 item.setWorkType(workTypeChoice.getSelectedItem().toString());
+                item.setType(workTypeChoice.getSelectedItemPosition());
                 item.setAcccessbility(getAvailable(taskAvailability.getSelectedItem().toString()));
                 item.setBeginDate(beginTimeText.getText().toString());
                 item.setEndDate(endTimeText.getText().toString());

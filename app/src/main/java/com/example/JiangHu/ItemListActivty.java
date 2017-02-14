@@ -20,16 +20,25 @@ import java.util.List;
 public class ItemListActivty extends AppCompatActivity {
 
     private int type = -1;
+    private int userID = -1;
+    private String status = "";
+    private String title = "";
+
     public MyTaskAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private List<TaskItem> taskList = new ArrayList<>();
+    private int takerUserID = -1;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_each_tab);
         type = getIntent().getIntExtra(Constant.TYPE, -1);
+        status = getIntent().getStringExtra(Constant.STATUS);
+        userID = getIntent().getIntExtra(Constant.USERID, -1);
+        takerUserID = getIntent().getIntExtra(Constant.TAKERUSERID, -1);
+        title = getIntent().getStringExtra(Constant.TITLE);
         TextView view = (TextView) findViewById(R.id.title);
-        view.setText(Constant.MissionTypes[type]);
+        view.setText(title);
         initView();
     }
 
@@ -78,13 +87,26 @@ public class ItemListActivty extends AppCompatActivity {
         for (int i = 0; i < Constant.TaskFactory.size(); i++)
         {
             TaskItem taskItem = Constant.TaskFactory.get(i);
-            if(!taskItem.getStatus().equals(Constant.Status_standby))
+            if(type > 0) {
+                if(taskItem.getStatus().equals(Constant.Status_standby))
+                    taskList.add(taskItem);
                 continue;
-            if (taskItem.getType() == type)
-                taskList.add(taskItem);
+            }
+            if(takerUserID > 0 ) {
+                if(taskItem.getTaker() == takerUserID && taskItem.getStatus().equals(status)) {
+                    taskList.add(taskItem);
+                }
+                continue;
+            }
+            if(userID > 0 ) {
+                if(taskItem.getUserID() == userID) {
+                    taskList.add(taskItem);
+                }
+                continue;
+            }
         }
         View view = findViewById(R.id.toolbar);
-        view.setVisibility(taskList.isEmpty() ? View.VISIBLE : View.GONE);
+        //view.setVisibility(taskList.isEmpty() ? View.VISIBLE : View.GONE);
         adapter.notifyDataSetChanged();
     }
 

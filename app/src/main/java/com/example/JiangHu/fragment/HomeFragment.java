@@ -102,6 +102,7 @@ public class HomeFragment extends Fragment
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), ItemListActivty.class);
                 intent.putExtra(Constant.TYPE, position);
+                intent.putExtra(Constant.TITLE, Constant.MissionTypes[position]);
                 getContext().startActivity(intent);
             }
         });
@@ -158,22 +159,22 @@ public class HomeFragment extends Fragment
         mBanner.setOnBannerItemClickListener(new Banner.OnBannerItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                if(position != 0){
-                    Toast.makeText(getContext(), imgs.get(position).getTips()+" 建设中",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    FragmentManager fm = ((MainActivity)getContext()).getSupportFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    Fragment fragment2 = fm.findFragmentByTag(TAGS[1]);
-                    if (fragment2 == null) {
-                        fragment2 = new TaskListTabFrament();
-                        ft.add(R.id.content_frame, fragment2, TAGS[1]);
-                    } else {
-                        ft.show(fragment2);
-                    }
-                    ft.addToBackStack(null);
-                    ft.commit();
-                }
+//                if(position != 0){
+//                    Toast.makeText(getContext(), imgs.get(position).getTips()+" 建设中",Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    FragmentManager fm = ((MainActivity)getContext()).getSupportFragmentManager();
+//                    FragmentTransaction ft = fm.beginTransaction();
+//                    Fragment fragment2 = fm.findFragmentByTag(TAGS[1]);
+//                    if (fragment2 == null) {
+//                        fragment2 = new TaskListTabFrament();
+//                        ft.add(R.id.content_frame, fragment2, TAGS[1]);
+//                    } else {
+//                        ft.show(fragment2);
+//                    }
+//                    ft.addToBackStack(null);
+//                    ft.commit();
+//                }
             }
         });
         mBanner.setBannerAdapter(adapter);

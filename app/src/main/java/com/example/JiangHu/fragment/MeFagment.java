@@ -10,10 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.example.JiangHu.Constant;
+import com.example.JiangHu.ItemListActivty;
 import com.example.JiangHu.MainActivity;
 import com.example.JiangHu.MyProfileActivity;
 import com.example.JiangHu.MyTaskAdapter;
@@ -86,6 +88,33 @@ public class MeFagment extends Fragment {
         gridAdapter.setImgs(pic_path);
         my_gridView_user.setNumColumns(texts.length);
         my_gridView_user.setAdapter(gridAdapter);
+        my_gridView_user.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(), ItemListActivty.class);
+                intent.putExtra(Constant.TITLE, texts[position]);
+                switch (position) {
+                    case 0:
+                        intent.putExtra(Constant.TAKERUSERID, 100);
+                        intent.putExtra(Constant.STATUS, Constant.Status_done);
+                        break;
+                    case 1:
+                        intent.putExtra(Constant.TAKERUSERID, 100);
+                        intent.putExtra(Constant.STATUS, Constant.Status_doing);
+                        break;
+                    case 2:
+                        intent.putExtra(Constant.USERID, 100);
+                        break;
+                    case 3:
+                        intent.putExtra(Constant.TAKERUSERID, 100);
+                        intent.putExtra(Constant.STATUS, Constant.Status_evaluate);
+                        break;
+                    default:
+                        intent.putExtra(Constant.STATUS, Constant.Status_done);
+                }
+                getContext().startActivity(intent);
+            }
+        });
 
         myalltasks = (ImageView) view.findViewById(R.id.my_all_tasks);
         myalltasks.setClickable(true);

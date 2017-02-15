@@ -47,7 +47,7 @@ public class MyTaskAdapter extends AutoRVAdapter {
             holder.getTextView(R.id.orderType).setTextColor(context.getResources().getColor(R.color.awesome_gray));
         }
 
-        String missionType = Constant.MissionTypes[item.getType()];
+        String missionType = item.getType() > 0 ? Constant.DISTANCETYPE[Constant.Distatnce_system] : Constant.MissionTypes[item.getType()];
         holder.getTextView(R.id.orderType).setText(missionType);
         holder.getTextView(R.id.info).setText(item.getContent());
         holder.getTextView(R.id.orderPrice).setText(item.getPayment());

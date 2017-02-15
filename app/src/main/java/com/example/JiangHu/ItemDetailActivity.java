@@ -1,5 +1,6 @@
 package com.example.JiangHu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,24 +14,25 @@ public class ItemDetailActivity extends AppCompatActivity {
 
     private static final String ARG_POSITION = "position";
 
-    private int taskTtemID;
+    private TaskItem taskItem;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        taskTtemID = getIntent().getIntExtra(Constant.ID, -1);
+        int taskTtemID = getIntent().getIntExtra(Constant.ID, -1);
         setContentView(R.layout.item_detail);
         TextView person_name = (TextView) findViewById(R.id.person_name);
         TextView help_content = (TextView) findViewById(R.id.help_content);
         TextView price = (TextView) findViewById(R.id.price);
         TextView phone_number = (TextView) findViewById(R.id.phone_number);
         ImageView personImg = (ImageView) findViewById(R.id.iv_personImg);
-        TaskItem taskItem = Constant.TaskFactory.get(taskTtemID);
+
+        taskItem = Constant.TaskFactory.get(taskTtemID);
         PersonInfo personInfo = (PersonInfo) Constant.personMap.get(taskItem.getUserID());
         person_name.setText(personInfo.getName());
         help_content.setText(taskItem.getContent());
-        price.setText("赏 "+taskItem.getPayment());
-        phone_number.setText("手机号码: "+taskItem.getPhoneNumber());
+        price.setText("赏 "+ taskItem.getPayment());
+        phone_number.setText("手机号码: "+ taskItem.getPhoneNumber());
         personImg.setImageResource(taskItem.getImageID());
 
 
@@ -39,7 +41,6 @@ public class ItemDetailActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TaskItem taskItem = Constant.TaskFactory.get(taskTtemID);
                 if(taskItem.getUserID() == 100)
                     Toast.makeText(ItemDetailActivity.this,"不能接受自己发布的任务!",Toast.LENGTH_SHORT).show();
                 else {
@@ -49,6 +50,15 @@ public class ItemDetailActivity extends AppCompatActivity {
                     Toast.makeText(ItemDetailActivity.this, "接镖成功", Toast.LENGTH_SHORT).show();
                     finish();
                 }
+            }
+        });
+        personImg.setClickable(true);
+        personImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ItemDetailActivity.this, MyProfileActivity.class);
+                intent.putExtra(Constant.USERID, taskItem.getUserID());
+                startActivity(intent);
             }
         });
     }

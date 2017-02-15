@@ -20,7 +20,7 @@ public class AllTasksTabFragment extends EachTabFragment {
             TaskItem taskItem = Constant.TaskFactory.get(i);
             if (!taskItem.getStatus().equals(Constant.Status_standby))
                 continue;
-            if (Integer.parseInt(taskItem.getAcccessbility()) == mPage)
+            if (taskItem.getDistanceType() == mPage)
                 taskList.add(taskItem);
         }
         return taskList;

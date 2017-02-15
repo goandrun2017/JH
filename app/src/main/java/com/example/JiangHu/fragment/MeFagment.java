@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.JiangHu.Constant;
 import com.example.JiangHu.ItemListActivty;
@@ -118,12 +119,21 @@ public class MeFagment extends Fragment {
             }
         });
 
+        TextView my_all_tasks_info = (TextView) view.findViewById(R.id.my_all_tasks_info);
+        my_all_tasks_info.setClickable(true);
+        my_all_tasks_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyTaskListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         myalltasks = (ImageView) view.findViewById(R.id.my_all_tasks);
         myalltasks.setClickable(true);
         myalltasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getActivity(), MyTaskListActivity.class);
                 startActivity(intent);
             }

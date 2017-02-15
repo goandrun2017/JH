@@ -34,7 +34,7 @@ public class TaskItem implements Serializable{
 
     private String workType;
 
-    private String acccessbility;
+    private int distanceType;
 
     private int distance;
 
@@ -163,12 +163,12 @@ public class TaskItem implements Serializable{
         this.workType = workType;
     }
 
-    public String getAcccessbility() {
-        return acccessbility;
+    public int getDistanceType() {
+        return distanceType;
     }
 
-    public void setAcccessbility(String acccessbility) {
-        this.acccessbility = acccessbility;
+    public void setDistanceType(int distanceType) {
+        this.distanceType = distanceType;
     }
 
     public void setEndDate(String endDate) {

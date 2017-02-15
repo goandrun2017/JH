@@ -3,8 +3,6 @@ package com.example.JiangHu.fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +60,7 @@ public class TaskCommitFragment extends Fragment {
                 item.setContent(descEdit.getText().toString());
                 item.setWorkType(workTypeChoice.getSelectedItem().toString());
                 item.setType(workTypeChoice.getSelectedItemPosition());
-                item.setAcccessbility(getAvailable(taskAvailability.getSelectedItem().toString()));
+                item.setDistanceType(getAvailable(taskAvailability.getSelectedItem().toString()));
                 item.setBeginDate(beginTimeText.getText().toString());
                 item.setEndDate(endTimeText.getText().toString());
                 item.setContactor(contactorEdit.getText().toString());
@@ -96,13 +94,13 @@ public class TaskCommitFragment extends Fragment {
 
             }
 
-            private String getAvailable(String s) {
+            private int getAvailable(String s) {
                 if (s.equalsIgnoreCase("本校"))
-                    return "0";
+                    return Constant.Distatnce_school;
                 else if (s.equalsIgnoreCase("全市"))
-                    return "1";
+                    return Constant.Distatnce_city;
                 else
-                   return "2";
+                    return Constant.Distatnce_system;
 
             }
 

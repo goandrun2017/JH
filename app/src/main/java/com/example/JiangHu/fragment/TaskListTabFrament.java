@@ -28,14 +28,14 @@ public class TaskListTabFrament extends Fragment {
 
     ViewPager viewPager;
 
-    public static TaskItem createNewItem(String title, String info, String price, String access) {
+    public static TaskItem createNewItem(String title, String info, String price, int distanceType) {
         TaskItem orderListItem1 = new TaskItem();
         orderListItem1.setTitle(title);
         orderListItem1.setContent(info);
-        orderListItem1.setPayment(price.isEmpty() ? price : price + "元");
+        orderListItem1.setPayment(price.isEmpty()? price :  price + "元");
         orderListItem1.setStatus("2");
         orderListItem1.setBeginDate("2017-02-14 10:33");
-        orderListItem1.setAcccessbility(access);
+        orderListItem1.setDistanceType(distanceType);
         return orderListItem1;
     }
 

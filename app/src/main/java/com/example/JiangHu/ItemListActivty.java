@@ -40,6 +40,7 @@ public class ItemListActivty extends AppCompatActivity {
         TextView view = (TextView) findViewById(R.id.title);
         view.setVisibility(title.isEmpty() ? View.GONE : View.VISIBLE);
         view.setText(title);
+        view.setVisibility(title.isEmpty() ? View.GONE : View.VISIBLE);
         initView();
     }
 
@@ -108,7 +109,7 @@ public class ItemListActivty extends AppCompatActivity {
             }
         }
         View view = findViewById(R.id.toolbar);
-        //view.setVisibility(taskList.isEmpty() ? View.VISIBLE : View.GONE);
+        view.setVisibility(title.isEmpty() ? View.GONE : View.VISIBLE);
         adapter.notifyDataSetChanged();
     }
 

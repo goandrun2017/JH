@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -39,6 +40,7 @@ public class MeFagment extends Fragment {
 
 
     private ImageView myprofiles,myalltasks;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     @Override
@@ -64,7 +66,7 @@ public class MeFagment extends Fragment {
     private void initView(View view)
     {
 
-        MyTaskAdapter adapter = new MyTaskAdapter(getContext(), new ArrayList<>(Constant.TaskFactory.subList(3,8)));
+        final MyTaskAdapter adapter = new MyTaskAdapter(getContext(), new ArrayList<>(Constant.TaskFactory.subList(3,8)));
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_recommend_tasks);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -124,6 +126,32 @@ public class MeFagment extends Fragment {
 
                 Intent intent = new Intent(getActivity(), MyTaskListActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.recommend_swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                adapter.notifyDataSetChanged();
+                                swipeRefreshLayout.setRefreshing(false);
+
+                            }
+                        });
+                    }
+                }).start();
             }
         });
     }

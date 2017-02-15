@@ -51,7 +51,7 @@ public class MyTaskAdapter extends AutoRVAdapter {
         holder.getTextView(R.id.orderType).setText(missionType);
         holder.getTextView(R.id.info).setText(item.getContent());
         holder.getTextView(R.id.orderPrice).setText(item.getPayment());
-        holder.getTextView(R.id.distance).setText(String.format("%.1f", item.getDistance()/1000.0) + "km");
+        holder.getTextView(R.id.distance).setText(item.getDistance() > 0 ? String.format("%.1f", item.getDistance()/1000.0) + "km" : "");
         holder.getImageView(R.id.titleImageView).setImageResource(item.getImageID());
 
         holder.getConvertView().findViewById(R.id.item_order_layout).setOnClickListener(new View.OnClickListener() {

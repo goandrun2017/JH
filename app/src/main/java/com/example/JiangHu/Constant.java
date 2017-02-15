@@ -94,7 +94,7 @@ public class Constant {
             orderListItem1.setType(type);
             orderListItem1.setTitle(title);
             orderListItem1.setContent(info);
-            orderListItem1.setPayment(price + "元");
+            orderListItem1.setPayment(price.isEmpty() ? price : price + "元");
             orderListItem1.setStatus(Status_standby);
             orderListItem1.setBeginDate("2017-02-14 10:20");
             orderListItem1.setAcccessbility(access);

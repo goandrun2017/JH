@@ -8,6 +8,7 @@
     <string name="university_prompt">您的学校</string>
     <string name="tasksort_prompt">任务类型</string>
     <string name="person_name">名字</string>
+    <string name="title">标题</string>
     <string name="help_content">求助内容</string>
     <string name="price">赏金</string>
     <string name="contact_num">联系方式</string>

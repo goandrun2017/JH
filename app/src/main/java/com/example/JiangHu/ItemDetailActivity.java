@@ -22,21 +22,21 @@ public class ItemDetailActivity extends AppCompatActivity {
         int taskTtemID = getIntent().getIntExtra(Constant.ID, -1);
         setContentView(R.layout.item_detail);
         TextView person_name = (TextView) findViewById(R.id.person_name);
+        TextView title = (TextView) findViewById(R.id.title);
         TextView help_content = (TextView) findViewById(R.id.help_content);
         TextView price = (TextView) findViewById(R.id.price);
         TextView phone_number = (TextView) findViewById(R.id.phone_number);
         ImageView personImg = (ImageView) findViewById(R.id.iv_personImg);
 
         taskItem = Constant.TaskFactory.get(taskTtemID);
-        PersonInfo personInfo = (PersonInfo) Constant.personMap.get(taskItem.getUserID());
+        PersonInfo personInfo = Constant.personMap.get(taskItem.getUserID());
         person_name.setText(personInfo.getName());
+        title.setText(taskItem.getTitle());
         help_content.setText(taskItem.getContent());
         price.setText("赏 "+ taskItem.getPayment());
         phone_number.setText("手机号码: "+ taskItem.getPhoneNumber());
         personImg.setImageResource(taskItem.getImageID());
 
-
-        TextView name = (TextView) findViewById(R.id.person_name);
         Button button1 = (Button) findViewById(R.id.btn_task_acceptance);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +54,15 @@ public class ItemDetailActivity extends AppCompatActivity {
         });
         personImg.setClickable(true);
         personImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ItemDetailActivity.this, MyProfileActivity.class);
+                intent.putExtra(Constant.USERID, taskItem.getUserID());
+                startActivity(intent);
+            }
+        });
+        person_name.setClickable(true);
+        person_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ItemDetailActivity.this, MyProfileActivity.class);

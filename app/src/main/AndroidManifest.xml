@@ -20,7 +20,7 @@
         <activity android:name=".SignupActivity"></activity>
         <activity android:name=".LoginActivity" android:theme="@style/AppTheme.Transparent"></activity>
         <activity android:name=".MyProfileActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".ItemDetailActivity"></activity>
+        <activity android:name=".ItemDetailActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".ItemListActivty" android:theme="@style/AppTheme.Transparent"></activity>
         <activity android:name=".MyTaskListActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>

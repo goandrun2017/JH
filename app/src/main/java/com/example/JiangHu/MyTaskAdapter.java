@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,7 +23,16 @@ public class MyTaskAdapter extends AutoRVAdapter {
     public MyTaskAdapter(Context context, List<TaskItem> list) {
         super(context, list);
         this.context = context;
+        this.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long itemID) {
+                Intent intent = new Intent(MyTaskAdapter.this.context, ItemDetailActivity.class);
+                intent.putExtra(Constant.ID, itemID);
+                MyTaskAdapter.this.context.startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     public int onCreateViewLayoutID(int viewType) {
@@ -55,14 +65,14 @@ public class MyTaskAdapter extends AutoRVAdapter {
         holder.getTextView(R.id.distance).setText(item.getDistance() > 0 ? String.format("%.1f", item.getDistance()/1000.0) + "km" : "");
         holder.getImageView(R.id.titleImageView).setImageResource(item.getImageID());
 
-        holder.getConvertView().findViewById(R.id.item_order_layout).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, ItemDetailActivity.class);
-                intent.putExtra(Constant.ID, item.getId());
-                context.startActivity(intent);
-            }
-        });
+//        holder.getConvertView().findViewById(R.id.item_order_layout).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, ItemDetailActivity.class);
+//                intent.putExtra(Constant.ID, item.getId());
+//                context.startActivity(intent);
+//            }
+//        });
 
     }
 }
